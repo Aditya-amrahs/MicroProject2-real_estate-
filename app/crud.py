@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from . import models
+from app import models
 
 
 def create_favorite(db: Session, user_id: int, property_id: int):

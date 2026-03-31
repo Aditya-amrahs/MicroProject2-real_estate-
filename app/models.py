@@ -1,8 +1,9 @@
-from pydoc import text
+# from pydoc import text
 
 from sqlalchemy import Column, Float, Integer, String, ForeignKey, Text
+
 from sqlalchemy.orm import relationship
-from .database import Base
+from app.database import Base
 
 
 class User(Base):
