@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from . import models
+from app import models
 
 
 def create_favorite(db: Session, user_id: int, property_id: int):
@@ -40,6 +40,19 @@ def verify_user(db: Session, email: str, password: str):
 
 # Property CRUD
 def create_property(db: Session, property_data):
+
+    # validation to prevent creating property with zero or negative price
+    if property_data.price <= 0:
+        raise Exception("Price must be positive")
+
+    # validation before creating property
+    agent = (
+        db.query(models.Agent).filter(models.Agent.id == property_data.agent_id).first()
+    )
+    if not agent:
+        raise Exception("Invalid agent_id")
+    #
+
     new_property = models.Property(**property_data.dict())
     db.add(new_property)
     db.commit()
