@@ -96,7 +96,9 @@ def search_properties(db: Session, city=None, min_price=None, max_price=None):
     query = db.query(models.Property)
 
     if city:
-        query = query.filter(models.Property.city == city)
+        query = query.filter(
+            models.Property.city.ilike(f"%{city}%")
+        )  # case-insensitive search
 
     if min_price is not None:
         query = query.filter(models.Property.price >= min_price)

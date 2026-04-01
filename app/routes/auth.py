@@ -25,4 +25,5 @@ def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
     return {
         "message": "Login successful",
         "user_id": db_user.id,
+        "name": db_user.name,
     }

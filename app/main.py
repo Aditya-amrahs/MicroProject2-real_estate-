@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.database import engine
+from app.database import engine, SessionLocal
+from app.data import data
 from app import models
 from app.routes import auth, properties
 from app.routes import favorites
@@ -8,6 +9,11 @@ import uvicorn
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
+
+# seed the database with initial data
+db = SessionLocal()
+data(db)
+db.close()
 
 app = FastAPI(
     title="Real Estate API",
