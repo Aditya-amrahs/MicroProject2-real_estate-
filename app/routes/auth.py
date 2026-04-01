@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 @router.post("/register")
-def register(email: str, password: str, db: Session = Depends(get_db)):
-    user = models.User(email=email, password=password)
+def register(name: str, email: str, password: str, db: Session = Depends(get_db)):
+    user = models.User(name=name, email=email, password=password)
     db.add(user)
     db.commit()
     db.refresh(user)
