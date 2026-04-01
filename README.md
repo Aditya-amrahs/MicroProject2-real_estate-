@@ -34,7 +34,7 @@ A modern, fast, and scalable REST API for managing real estate properties, built
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/Aditya-amrahs/MicroProject2-real_estate-.git)
    cd MicroProject2-real_estate
    ```
 
