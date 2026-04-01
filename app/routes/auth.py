@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app import models
-from app import crud, schemas
+from app import crud
 
 router = APIRouter()
 
@@ -17,8 +17,8 @@ def register(name: str, email: str, password: str, db: Session = Depends(get_db)
 
 
 @router.post("/login")
-def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
-    db_user = crud.verify_user(db, user.email, user.password)
+def login(email: str, password: str, db: Session = Depends(get_db)):
+    db_user = crud.verify_user(db, email, password)
     if not db_user:
         raise HTTPException(status_code=400, detail="Invalid email or password")
 
