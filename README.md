@@ -61,7 +61,7 @@ A modern, fast, and scalable REST API for managing real estate properties, built
 
 1. **Create a virtual environment**
    ```bash
-   python -m venv .venv
+   python -3.11 -m venv .venv
    # On Windows
    .venv\Scripts\activate
    # On macOS/Linux
@@ -219,4 +219,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ using FastAPI
+
+Made with ❤️
